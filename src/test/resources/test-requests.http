@@ -1,0 +1,300 @@
+###
+POST http://localhost:8080/carparks
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+{
+  "name": "Basir",
+  "address": "cp Address",
+  "prices": 3,
+  "floors": [
+    {
+      "identifier": "B",
+      "spots": [{
+        "identifier": "2P"
+      }]
+
+    },
+    {
+      "identifier": "C",
+      "spots": [{
+        "identifier": "3P"
+      },
+        {
+          "identifier": "4P"
+        }]
+
+    }
+
+  ]
+
+}
+
+###
+GET http://localhost:8080/carparks
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/carparks?name=nadim
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/carparks/1
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+PUT http://localhost:8080/carparks/4
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+{
+  "name": "Nadim",
+  "address": "kabul ",
+  "pricePerHour": 5
+
+}
+
+###
+DELETE http://localhost:8080/carparks/2
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+//CarParkFloor
+
+###
+POST http://localhost:8080/carparkfloors/carparks/2/floors
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+{
+  "identifier": "D",
+  "spots": [{
+    "identifier": "5P"
+  }]
+}
+
+###
+GET http://localhost:8080/carparkfloors/carparks/2/floors
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/carparkfloors/carparks/2/floors/C
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+
+###
+DELETE http://localhost:8080/carparkfloors/carparks/2/floors/C
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+
+// Parking Spot
+
+###
+POST http://localhost:8080/parkingspots/carparks/2/floors/B/spots
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+{
+
+  "identifier": "1P"
+
+}
+
+
+###
+GET http://localhost:8080/parkingspots/carparks/6/spots?free=false
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/parkingspots/carparks/6/floors/D/spots
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/parkingspots/8
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+####
+#PUT http://localhost:8080/parkingspots/2
+#Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+#Accept: application/json
+#
+#{
+#  "spotIdentifier": "5P"
+#}
+
+###
+DELETE http://localhost:8080/parkingspots/8
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+
+// User
+
+###
+POST http://localhost:8080/users
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+{
+  "id":1,
+  "firstName": "Enayat",
+  "lastName": "Samady",
+  "email": "sam@yahoo.com",
+  "cars": [{
+    "brand": "Volvo",
+    "model": "model",
+    "colour":"Black",
+    "vrp": 34448
+  }]
+}
+
+
+###
+GET http://localhost:8080/users
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/users/1
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+PUT localhost:8080/users/8
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+{
+  "firstname": "Khalid",
+  "lastname": "Salim",
+  "email": "kal.com"
+}
+
+###
+DELETE localhost:8080/users/6
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+
+###
+// CAR
+
+###
+POST http://localhost:8080/cars
+Authorization: Basic c2FtQHlhaG9vLmNvbTo2
+Accept: application/json
+
+{
+  "brand": "Benz",
+  "model": "2021",
+  "colour":"Black",
+  "vrp": 789,
+  "owner": {
+    "firstName": "Hikmatullah",
+    "lastName": "Samady",
+    "email": "hs@yahoo.com"
+  }
+}
+
+###
+GET http://localhost:8080/cars?user=1
+Authorization: Basic YWRtaW5AdnNhLnNrOjE
+Accept: application/json
+
+###
+GET http://localhost:8080/cars/2
+Authorization: Basic YWRtaW5AdnNhLnNrOjE
+Accept: application/json
+
+###
+PUT http://localhost:8080/cars/2
+Authorization: Basic YWRtaW5AdnNhLnNrOjE
+Accept: application/json
+
+{
+  "brand": "Lambo",
+  "model": "2022",
+  "colour":"Blue",
+  "vrp": 64448
+
+}
+
+###
+DELETE http://localhost:8080/cars/5
+Authorization: Basic YWRtaW5AdnNhLnNrOjE
+Accept: application/json
+
+// RESERVATION
+
+###
+#c2FtQHlhaG9vLmNvbTo2
+POST localhost:8080/reservations
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+{
+  "spot":{
+    "id": 10
+  },
+  "car":{
+    "id": 14
+  }
+}
+
+###
+GET http://localhost:8080/reservations
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/reservations?spot=3&date=2022-05-13
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/reservations?user=6
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+GET http://localhost:8080/reservations/9
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+POST http://localhost:8080/reservations/15/end
+Authorization: Basic c2FtQHlhaG9vLmNvbTo2
+Accept: application/json
+
+
+// Holiday
+
+###
+POST http://localhost:8080/holidays
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+{
+  "name": "EidQurban",
+  "date": "2022-5-2"
+}
+
+
+###
+GET http://localhost:8080/holidays
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json
+
+###
+DELETE http://localhost:8080/holidays/2
+Authorization: Basic YWRtaW5AdnNhLnNrOjE=
+Accept: application/json

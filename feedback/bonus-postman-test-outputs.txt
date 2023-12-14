@@ -1,0 +1,1528 @@
+updateCarPark
+
+→ Create new car park
+  [20. 6. 2022, 1:14:43]  POST http://localhost:8080/carparks  
+  201 Created ★ 64ms time ★ 439B↑ 145B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 96B
+  │ {
+  │   "id": 28319418,
+  │   "name": "Park1",
+  │   "address": "Address1",
+  │   "prices": 10,
+  │   "floors": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 69B
+  │ {"id":56,"name":"Park1","address":"Address1","prices":
+  │ 10,"floors":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  45ms      11ms   2ms          1ms             37ms             10ms       586µs     109ms 
+
+  [1:14:43]  √  createAndSetCarParkId
+
+→ Update car park
+  [20. 6. 2022, 1:14:43]  PUT http://localhost:8080/carparks/56  
+  400 Bad Request ★ 46ms time ★ 435B↑ 495B↓ size ★ 10↑ 3↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 90B
+  │ {
+  │   "id": 56,
+  │   "name": "Park2",
+  │   "address": "Address2",
+  │   "prices": 12,
+  │   "floors": []
+  │ }
+  └ 
+  ┌ ↓ text/plain ★ text ★ plain ★ utf8 ★ 401B
+  │ Unrecognized field "prices" (class sk.stuba.fei.uim.vs
+  │ a.pr2.entities.CAR_PARK), not marked as ignorable (5 k
+  │ nown properties: "pricePerHour", "car_park_floors", "n
+  │ ame", "address", "id"])
+  │  at [Source: (String)"{
+  │   "id": 56,
+  │   "name": "Park2",
+  │   "address": "Address2",
+  │   "prices": 12,
+  │   "floors": []
+  │ }"; line: 5, column: 15] (through reference chain: sk.
+  │ stuba.fei.uim.vsa.pr2.entities.CAR_PARK["prices"])
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       835µs   (cache)      (cache)         41ms             2ms        109µs     47ms  
+
+  [1:14:43] 1. getUpdatedCarPark
+
+→ Get carp park by id
+  [20. 6. 2022, 1:14:43]  GET http://localhost:8080/carparks/56  
+  200 OK ★ 14ms time ★ 293B↑ 140B↓ size ★ 8↑ 2↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 69B
+  │ {"id":56,"name":"Park1","address":"Address1","prices":
+  │ 10,"floors":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       1ms    528µs        739µs           8ms              1ms        66µs      14ms  
+
+  [1:14:44] 2. getUpdatedCarPark
+
+┌─────────────────────────┬───────────────────┬───────────────────┐
+│                         │          executed │            failed │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              iterations │                 1 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│                requests │                 3 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│            test-scripts │                 6 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│      prerequest-scripts │                 3 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              assertions │                 3 │                 2 │
+├─────────────────────────┴───────────────────┴───────────────────┤
+│ total run duration: 562ms                                       │
+├─────────────────────────────────────────────────────────────────┤
+│ total data received: 539B (approx)                              │
+├─────────────────────────────────────────────────────────────────┤
+│ average response time: 41ms [min: 14ms, max: 64ms, s.d.: 20ms]  │
+├─────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 2ms [min: 528µs, max: 2ms, s.d.: 1ms]  │
+├─────────────────────────────────────────────────────────────────┤
+│ average first byte time: 29ms [min: 8ms, max: 41ms, s.d.: 14ms] │
+└─────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                
+                                                                           
+ 1.  AssertionError  getUpdatedCarPark                                     
+                     expected response to have status code 200 but got 400 
+                     at assertion:0 in test-script                         
+                     inside "Update car park"                              
+                                                                           
+ 2.  AssertionError  getUpdatedCarPark                                     
+                     expected 'Park1' to deeply equal 'Park2'              
+                     at assertion:0 in test-script                         
+                     inside "Get carp park by id"                          
+
+-----------------------
+
+updateCarParkFloor
+
+→ Create new car park
+  [20. 6. 2022, 1:14:45]  POST http://localhost:8080/carparks  
+  201 Created ★ 42ms time ★ 440B↑ 145B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 97B
+  │ {
+  │    "id": 28319418,
+  │   "name": "Park1",
+  │   "address": "Address1",
+  │   "prices": 10,
+  │   "floors": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 69B
+  │ {"id":57,"name":"Park1","address":"Address1","prices":
+  │ 10,"floors":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  32ms      7ms    2ms          928µs           22ms             7ms        482µs     75ms  
+
+  [1:14:45]  √  createAndSetCarParkId
+
+→ Create new car park floor for given car park
+  [20. 6. 2022, 1:14:45]  POST http://localhost:8080/carparks/57/floors  
+  201 Created ★ 21ms time ★ 431B↑ 131B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 78B
+  │ {
+  │   "id": -1331359,
+  │   "identifier": "Floor1",
+  │   "carPark": 57,
+  │   "spots": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 55B
+  │ {"id":57,"identifier":"Floor1","carPark":57,"spots":[]
+  │ }
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       637µs   (cache)      (cache)         17ms             2ms        69µs      22ms  
+
+  [1:14:45]  √  createCarParkFloor
+
+→ Update car park floor
+  [20. 6. 2022, 1:14:46]  PUT http://localhost:8080/carparks/57/floors/Floor1  
+  405 Method Not Allowed ★ 5ms time ★ 423B↑ 81B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 77B
+  │ {
+  │   "id": 57,
+  │   "identifier": "Floor2",
+  │   "carPark": 57,
+  │   "spots": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       340µs   (cache)      (cache)         2ms              1ms        61µs      5ms   
+
+  [1:14:46] 1. updateCarParkFloor
+
+→ Get car park floor that belongs to car park with given id and has given identifier Copy 2
+  [20. 6. 2022, 1:14:46]  GET http://localhost:8080/carparkfloors/57  
+  404 Not Found ★ 4ms time ★ 298B↑ 45B↓ size ★ 8↑ 1↓ headers ★ 0 cookies
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       252µs   (cache)      (cache)         2ms              1ms        42µs      5ms   
+
+  [1:14:46] 2. getUpdatedCarParkFloor
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 4 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 8 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 4 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 4 │                2 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 534ms                                      │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 124B (approx)                             │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 18ms [min: 4ms, max: 42ms, s.d.: 15ms]  │
+├────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 2ms [min: 2ms, max: 2ms, s.d.: 0µs]   │
+├────────────────────────────────────────────────────────────────┤
+│ average first byte time: 11ms [min: 2ms, max: 22ms, s.d.: 8ms] │
+└────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                                                             
+                                                                                                                        
+ 1.  AssertionError  updateCarParkFloor                                                                                 
+                     expected response to have status code 200 but got 405                                              
+                     at assertion:0 in test-script                                                                      
+                     inside "Update car park floor"                                                                     
+                                                                                                                        
+ 2.  AssertionError  getUpdatedCarParkFloor                                                                             
+                     expected response to have status code 200 but got 404                                              
+                     at assertion:0 in test-script                                                                      
+                     inside "Get car park floor that belongs to car park with given id and has given identifier Copy 2" 
+
+-----------------------
+
+updateCarWithoutType
+
+→ Create user
+  [20. 6. 2022, 1:14:47]  POST http://localhost:8080/users  
+  201 Created ★ 42ms time ★ 463B↑ 170B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 122B
+  │ {
+  │   "id": -92119638,
+  │   "firstName": "Jozko",
+  │   "lastName": "Mkrvicka",
+  │   "email": "jozo.mrkvicka@stuba.sk",
+  │   "cars": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 94B
+  │ {"id":58,"firstName":"Jozko","lastName":"Mkrvicka","em
+  │ ail":"jozo.mrkvicka@stuba.sk","cars":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  31ms      8ms    2ms          898µs           22ms             7ms        470µs     73ms  
+
+  [1:14:48]  √  createUser
+
+→ Create car
+  [20. 6. 2022, 1:14:48]  POST http://localhost:8080/cars  
+  400 Bad Request ★ 13ms time ★ 604B↑ 66B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 264B
+  │ {
+  │   "id": -47280362,
+  │   "brand": "Skoda",
+  │   "model": "Fabia",
+  │   "vrp": "BA111AA",
+  │   "owner": {
+  │     "id": 58,
+  │     "firstName": "Jozko",
+  │     "lastName": "Mkrvicka",
+  │     "email": "jozo.mrkvicka@stuba.sk",
+  │     "cars": []
+  │   },
+  │   "colour": "Green",
+  │   "reservations": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       853µs   (cache)      (cache)         8ms              3ms        124µs     14ms  
+
+  [1:14:48] 1. createCar
+
+→ Update car
+  [20. 6. 2022, 1:14:48]  PUT http://localhost:8080/cars/{{carId}}  
+  404 Not Found ★ 10ms time ★ 619B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 262B
+  │ {
+  │   "id": {{carId}},
+  │   "brand": "Ford",
+  │   "model": "Fiesta",
+  │   "vrp": "BA222AA",
+  │   "owner": {
+  │     "id": 58,
+  │     "firstName": "Jozko",
+  │     "lastName": "Mkrvicka",
+  │     "email": "jozo.mrkvicka@stuba.sk",
+  │     "cars": []
+  │   },
+  │   "colour": "Red",
+  │   "reservations": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       1ms    427µs        687µs           5ms              1ms        57µs      10ms  
+
+  [1:14:48] 2. updateCar
+
+→ Get car with id
+  [20. 6. 2022, 1:14:48]  GET http://localhost:8080/cars/{{carId}}  
+  404 Not Found ★ 8ms time ★ 304B↑ 45B↓ size ★ 8↑ 1↓ headers ★ 0 cookies
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       266µs   (cache)      (cache)         4ms              2ms        67µs      9ms   
+
+  [1:14:48] 3. getCar
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  4 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                  8 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                  4 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                  4 │                 3 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 559ms                                        │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 94B (approx)                                │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 18ms [min: 8ms, max: 42ms, s.d.: 13ms]    │
+├──────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 1ms [min: 427µs, max: 2ms, s.d.: 903µs] │
+├──────────────────────────────────────────────────────────────────┤
+│ average first byte time: 10ms [min: 4ms, max: 22ms, s.d.: 7ms]   │
+└──────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                
+                                                                           
+ 1.  AssertionError  createCar                                             
+                     expected response to have status code 201 but got 400 
+                     at assertion:0 in test-script                         
+                     inside "Create car"                                   
+                                                                           
+ 2.  AssertionError  updateCar                                             
+                     expected response to have status code 200 but got 404 
+                     at assertion:0 in test-script                         
+                     inside "Update car"                                   
+                                                                           
+ 3.  AssertionError  getCar                                                
+                     expected response to have status code 200 but got 404 
+                     at assertion:0 in test-script                         
+                     inside "Get car with id"                              
+
+-----------------------
+
+updateCarWithType
+
+→ Create user
+  [20. 6. 2022, 1:14:49]  POST http://localhost:8080/users  
+  201 Created ★ 46ms time ★ 463B↑ 170B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 122B
+  │ {
+  │   "id": -92119638,
+  │   "firstName": "Jozko",
+  │   "lastName": "Mkrvicka",
+  │   "email": "jozo.mrkvicka@stuba.sk",
+  │   "cars": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 94B
+  │ {"id":59,"firstName":"Jozko","lastName":"Mkrvicka","em
+  │ ail":"jozo.mrkvicka@stuba.sk","cars":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  28ms      8ms    7ms          996µs           21ms             7ms        465µs     74ms  
+
+  [1:14:50]  √  createUser
+
+→ Create car type Copy 2
+  [20. 6. 2022, 1:14:50]  POST http://localhost:8080/cartypes  
+  404 Not Found ★ 7ms time ★ 384B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 41B
+  │ {
+  │   "id": 2015878,
+  │   "name": "Electric"
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       1ms    (cache)      (cache)         2ms              3ms        97µs      9ms   
+
+  [1:14:50] 1. createCarType
+
+→ Create car
+  [20. 6. 2022, 1:14:50]  POST http://localhost:8080/cars  
+  400 Bad Request ★ 13ms time ★ 675B↑ 66B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 335B
+  │ {
+  │   "id": -47280362,
+  │   "brand": "Skoda",
+  │   "model": "Fabia",
+  │   "vrp": "BA111AA",
+  │   "owner": {
+  │     "id": 59,
+  │     "firstName": "Jozko",
+  │     "lastName": "Mkrvicka",
+  │     "email": "jozo.mrkvicka@stuba.sk",
+  │     "cars": []
+  │   },
+  │   "colour": "Green",
+  │   "reservations": [],
+  │   "type": {
+  │       "id": {{carTypeId}},
+  │       "name": "Electric"
+  │     }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       363µs   (cache)      (cache)         10ms             2ms        122µs     14ms  
+
+  [1:14:50] 2. createCar
+
+→ Update car
+  [20. 6. 2022, 1:14:50]  PUT http://localhost:8080/cars/{{carId}}  
+  404 Not Found ★ 9ms time ★ 619B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 262B
+  │ {
+  │   "id": {{carId}},
+  │   "brand": "Ford",
+  │   "model": "Fiesta",
+  │   "vrp": "BA222AA",
+  │   "owner": {
+  │     "id": 59,
+  │     "firstName": "Jozko",
+  │     "lastName": "Mkrvicka",
+  │     "email": "jozo.mrkvicka@stuba.sk",
+  │     "cars": []
+  │   },
+  │   "colour": "Red",
+  │   "reservations": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       964µs   356µs        632µs           4ms              1ms        64µs      9ms   
+
+  [1:14:50] 3. updateCar
+
+→ Get car with id
+  [20. 6. 2022, 1:14:50]  GET http://localhost:8080/cars/{{carId}}  
+  404 Not Found ★ 7ms time ★ 304B↑ 45B↓ size ★ 8↑ 1↓ headers ★ 0 cookies
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       344µs   (cache)      (cache)         4ms              1ms        49µs      7ms   
+
+  [1:14:50] 4. getCar
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 5 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                10 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 5 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 5 │                4 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 674ms                                      │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 94B (approx)                              │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 16ms [min: 7ms, max: 46ms, s.d.: 14ms]  │
+├────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 5ms [min: 356µs, max: 7ms, s.d.: 2ms] │
+├────────────────────────────────────────────────────────────────┤
+│ average first byte time: 8ms [min: 2ms, max: 21ms, s.d.: 7ms]  │
+└────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                
+                                                                           
+ 1.  AssertionError  createCarType                                         
+                     expected response to have status code 201 but got 404 
+                     at assertion:0 in test-script                         
+                     inside "Create car type Copy 2"                       
+                                                                           
+ 2.  AssertionError  createCar                                             
+                     expected response to have status code 201 but got 400 
+                     at assertion:0 in test-script                         
+                     inside "Create car"                                   
+                                                                           
+ 3.  AssertionError  updateCar                                             
+                     expected response to have status code 200 but got 404 
+                     at assertion:0 in test-script                         
+                     inside "Update car"                                   
+                                                                           
+ 4.  AssertionError  getCar                                                
+                     expected response to have status code 200 but got 404 
+                     at assertion:0 in test-script                         
+                     inside "Get car with id"                              
+
+-----------------------
+
+updateParkingSpotWithoutType
+
+→ Create new car park
+  [20. 6. 2022, 1:14:52]  POST http://localhost:8080/carparks  
+  201 Created ★ 42ms time ★ 439B↑ 145B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 96B
+  │ {
+  │   "id": 28319418,
+  │   "name": "Park1",
+  │   "address": "Address1",
+  │   "prices": 10,
+  │   "floors": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 69B
+  │ {"id":60,"name":"Park1","address":"Address1","prices":
+  │ 10,"floors":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  33ms      8ms    2ms          972µs           20ms             8ms        673µs     75ms  
+
+  [1:14:52]  √  createAndSetCarParkId
+
+→ Create new car park floor for given car park
+  [20. 6. 2022, 1:14:52]  POST http://localhost:8080/carparks/60/floors  
+  201 Created ★ 21ms time ★ 431B↑ 131B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 78B
+  │ {
+  │   "id": -1331359,
+  │   "identifier": "Floor1",
+  │   "carPark": 60,
+  │   "spots": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 55B
+  │ {"id":60,"identifier":"Floor1","carPark":60,"spots":[]
+  │ }
+  └
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       732µs   (cache)      (cache)         17ms             2ms        79µs      22ms  
+
+
+→ Create new car park floor for given car park
+  [20. 6. 2022, 1:14:52]  POST http://localhost:8080/carparks/60/floors  
+  400 Bad Request ★ 12ms time ★ 413B↑ 66B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 60B
+  │ {
+  │   "identifier": "Floor1",
+  │   "carPark": 60,
+  │   "spots": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       271µs   (cache)      (cache)         9ms              1ms        65µs      13ms  
+
+
+→ Create parking spot for given car park and given car park floor
+  [20. 6. 2022, 1:14:52]  POST http://localhost:8080/carparks/60/floors/Floor1/spots  
+  404 Not Found ★ 10ms time ★ 495B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 128B
+  │ {
+  │   "id": -64207243,
+  │   "identifier": "1.01",
+  │   "carParkFloor": "Floor1",
+  │   "carPark": 60,
+  │   "free": true,
+  │   "reservations": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       1ms    595µs        1ms             4ms              2ms        110µs     11ms  
+
+  [1:14:52] 1. createParkingSpotWithoutType
+
+→ Update parking spot
+  [20. 6. 2022, 1:14:52]  PUT http://localhost:8080/parkingspots/{{parkingSpotId}}  
+  405 Method Not Allowed ★ 5ms time ★ 509B↑ 81B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 136B
+  │ {
+  │   "id": {{parkingSpotId}},
+  │   "identifier": "1.02",
+  │   "carParkFloor": "Floor1",
+  │   "carPark": 60,
+  │   "free": true,
+  │   "reservations": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       377µs   (cache)      (cache)         2ms              1ms        48µs      6ms   
+
+  [1:14:52] 2. updateParkingSpotWithoutType
+
+→ Get parking spot by id
+  [20. 6. 2022, 1:14:52]  GET http://localhost:8080/parkingspots/{{parkingSpotId}}  
+  404 Not Found ★ 7ms time ★ 320B↑ 45B↓ size ★ 8↑ 1↓ headers ★ 0 cookies
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       272µs   (cache)      (cache)         4ms              1ms        42µs      7ms   
+
+  [1:14:52] 3. getUpdatedParkingSpotWithoutType
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  6 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                 12 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                  6 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                  4 │                 3 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 798ms                                        │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 124B (approx)                               │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 16ms [min: 5ms, max: 42ms, s.d.: 12ms]    │
+├──────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 2ms [min: 595µs, max: 2ms, s.d.: 864µs] │
+├──────────────────────────────────────────────────────────────────┤
+│ average first byte time: 9ms [min: 2ms, max: 20ms, s.d.: 6ms]    │
+└──────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                                   
+                                                                                              
+ 1.  AssertionError  createParkingSpotWithoutType                                             
+                     expected response to have status code 201 but got 404                    
+                     at assertion:0 in test-script                                            
+                     inside "Create parking spot for given car park and given car park floor" 
+                                                                                              
+ 2.  AssertionError  updateParkingSpotWithoutType                                             
+                     expected response to have status code 200 but got 405                    
+                     at assertion:0 in test-script                                            
+                     inside "Update parking spot"                                             
+                                                                                              
+ 3.  AssertionError  getUpdatedParkingSpotWithoutType                                         
+                     expected response to have status code 200 but got 404                    
+                     at assertion:0 in test-script                                            
+                     inside "Get parking spot by id"                                          
+
+-----------------------
+
+updateParkingSpotWithType
+
+→ Create new car park
+  [20. 6. 2022, 1:14:54]  POST http://localhost:8080/carparks  
+  201 Created ★ 49ms time ★ 439B↑ 145B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 96B
+  │ {
+  │   "id": 28319418,
+  │   "name": "Park1",
+  │   "address": "Address1",
+  │   "prices": 10,
+  │   "floors": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 69B
+  │ {"id":61,"name":"Park1","address":"Address1","prices":
+  │ 10,"floors":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  38ms      11ms   3ms          1ms             22ms             8ms        587µs     86ms  
+
+  [1:14:54]  √  createAndSetCarParkId
+
+→ Create new car park floor for given car park
+  [20. 6. 2022, 1:14:54]  POST http://localhost:8080/carparks/61/floors  
+  201 Created ★ 29ms time ★ 431B↑ 131B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 78B
+  │ {
+  │   "id": -1331359,
+  │   "identifier": "Floor1",
+  │   "carPark": 61,
+  │   "spots": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 55B
+  │ {"id":61,"identifier":"Floor1","carPark":61,"spots":[]
+  │ }
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  4ms       1ms    (cache)      (cache)         22ms             3ms        99µs      32ms  
+
+
+→ Create new car park floor for given car park
+  [20. 6. 2022, 1:14:55]  POST http://localhost:8080/carparks/61/floors  
+  400 Bad Request ★ 18ms time ★ 413B↑ 66B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 60B
+  │ {
+  │   "identifier": "Floor1",
+  │   "carPark": 61,
+  │   "spots": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       423µs   (cache)      (cache)         14ms             2ms        126µs     19ms  
+
+
+→ Create car type Copy
+  [20. 6. 2022, 1:14:55]  POST http://localhost:8080/cartypes  
+  404 Not Found ★ 10ms time ★ 384B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 41B
+  │ {
+  │   "id": 2015878,
+  │   "name": "Electric"
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       1ms    552µs        908µs           3ms              2ms        77µs      11ms  
+
+  [1:14:55] 1. createCarType
+
+→ Create parking spot for given car park and given car park floor
+  [20. 6. 2022, 1:14:55]  POST http://localhost:8080/carparks/61/floors/Floor1/spots  
+  404 Not Found ★ 7ms time ★ 565B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 198B
+  │ {
+  │   "id": -64207243,
+  │   "identifier": "1.01",
+  │   "carParkFloor": "Floor1",
+  │   "carPark": 61,
+  │   "free": true,
+  │   "reservations": [],
+  │    "type": {
+  │       "id": {{carTypeId}},
+  │       "name": "Electric"
+  │   }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       428µs   (cache)      (cache)         3ms              2ms        79µs      8ms   
+
+  [1:14:55] 2. createParkingSpotWithoutType
+
+→ Update parking spot
+  [20. 6. 2022, 1:14:55]  PUT http://localhost:8080/parkingspots/{{parkingSpotId}}  
+  405 Method Not Allowed ★ 7ms time ★ 579B↑ 81B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 206B
+  │ {
+  │   "id": {{parkingSpotId}},
+  │   "identifier": "1.02",
+  │   "carParkFloor": "Floor1",
+  │   "carPark": 61,
+  │   "free": true,
+  │   "reservations": [],
+  │    "type": {
+  │       "id": {{carTypeId}},
+  │       "name": "Electric"
+  │   }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       414µs   (cache)      (cache)         3ms              2ms        78µs      8ms   
+
+  [1:14:55] 3. updateParkingSpotWithoutType
+
+→ Get parking spot by id
+  [20. 6. 2022, 1:14:55]  GET http://localhost:8080/parkingspots/{{parkingSpotId}}  
+  404 Not Found ★ 9ms time ★ 320B↑ 45B↓ size ★ 8↑ 1↓ headers ★ 0 cookies
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       488µs   (cache)      (cache)         6ms              2ms        74µs      11ms  
+
+  [1:14:55] 4. getUpdatedParkingSpotWithoutType
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 7 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                14 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 7 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 5 │                4 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 1061ms                                     │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 124B (approx)                             │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 18ms [min: 7ms, max: 49ms, s.d.: 14ms]  │
+├────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 2ms [min: 552µs, max: 3ms, s.d.: 1ms] │
+├────────────────────────────────────────────────────────────────┤
+│ average first byte time: 11ms [min: 3ms, max: 22ms, s.d.: 8ms] │
+└────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                                   
+                                                                                              
+ 1.  AssertionError  createCarType                                                            
+                     expected response to have status code 201 but got 404                    
+                     at assertion:0 in test-script                                            
+                     inside "Create car type Copy"                                            
+                                                                                              
+ 2.  AssertionError  createParkingSpotWithoutType                                             
+                     expected response to have status code 201 but got 404                    
+                     at assertion:0 in test-script                                            
+                     inside "Create parking spot for given car park and given car park floor" 
+                                                                                              
+ 3.  AssertionError  updateParkingSpotWithoutType                                             
+                     expected response to have status code 200 but got 405                    
+                     at assertion:0 in test-script                                            
+                     inside "Update parking spot"                                             
+                                                                                              
+ 4.  AssertionError  getUpdatedParkingSpotWithoutType                                         
+                     expected response to have status code 200 but got 404                    
+                     at assertion:0 in test-script                                            
+                     inside "Get parking spot by id"                                          
+
+-----------------------
+
+updateReservationWithoutType
+
+→ Create new car park Copy
+  [20. 6. 2022, 1:14:59]  POST http://localhost:8080/carparks  
+  401 Unauthorized ★ 31ms time ★ 455B↑ 48B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 96B
+  │ {
+  │   "id": 28319418,
+  │   "name": "Park1",
+  │   "address": "Address1",
+  │   "prices": 10,
+  │   "floors": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  37ms      9ms    2ms          965µs           9ms              8ms        391µs     67ms  
+
+  [1:14:59] 1. createAndSetCarParkId
+
+→ Create new car park floor for given car park Copy
+  [20. 6. 2022, 1:14:59]  POST http://localhost:8080/carparks//floors  
+  404 Not Found ★ 6ms time ★ 443B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 76B
+  │ {
+  │   "id": -1331359,
+  │   "identifier": "Floor1",
+  │   "carPark": ,
+  │   "spots": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       877µs   (cache)      (cache)         2ms              2ms        76µs      8ms   
+
+
+→ Create new car park floor for given car park Copy
+  [20. 6. 2022, 1:14:59]  POST http://localhost:8080/carparks//floors  
+  404 Not Found ★ 5ms time ★ 425B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 58B
+  │ {
+  │   "identifier": "Floor1",
+  │   "carPark": ,
+  │   "spots": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       351µs   (cache)      (cache)         2ms              1ms        40µs      5ms   
+
+
+→ Create parking spot for given car park and given car park floor Copy
+  [20. 6. 2022, 1:14:59]  POST http://localhost:8080/carparks//floors/Floor1/spots  
+  404 Not Found ★ 5ms time ★ 507B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 126B
+  │ {
+  │   "id": -64207243,
+  │   "identifier": "1.01",
+  │   "carParkFloor": "Floor1",
+  │   "carPark": ,
+  │   "free": true,
+  │   "reservations": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       670µs   (cache)      (cache)         2ms              1ms        47µs      6ms   
+
+  [1:14:59] 2. createParkingSpotWithoutType
+
+→ Create user Copy
+  [20. 6. 2022, 1:14:59]  POST http://localhost:8080/users  
+  401 Unauthorized ★ 10ms time ★ 479B↑ 48B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 122B
+  │ {
+  │   "id": -92119638,
+  │   "firstName": "Jozko",
+  │   "lastName": "Mkrvicka",
+  │   "email": "jozo.mrkvicka@stuba.sk",
+  │   "cars": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       393µs   (cache)      (cache)         5ms              3ms        79µs      10ms  
+
+  [1:14:59] 3. createUser
+
+→ Create car Copy
+  [20. 6. 2022, 1:14:59]  POST http://localhost:8080/cars  
+  400 Bad Request ★ 11ms time ★ 628B↑ 66B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 272B
+  │ {
+  │   "id": -47280362,
+  │   "brand": "Skoda",
+  │   "model": "Fabia",
+  │   "vrp": "BA111AA",
+  │   "owner": {
+  │     "id": {{userId}},
+  │     "firstName": "Jozko",
+  │     "lastName": "Mkrvicka",
+  │     "email": "jozo.mrkvicka@stuba.sk",
+  │     "cars": []
+  │   },
+  │   "colour": "Green",
+  │   "reservations": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       252µs   (cache)      (cache)         8ms              2ms        78µs      12ms  
+
+  [1:14:59] 4. createCar
+
+→ Create new reservation Copy
+  [20. 6. 2022, 1:14:59]  POST http://localhost:8080/reservations  
+  401 Unauthorized ★ 11ms time ★ 992B↑ 48B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 628B
+  │ {
+  │   "id": -61316587,
+  │   "start": "2022-06-08T10:00:00",
+  │   "end": "2022-06-10T09:00:00",
+  │   "prices": 15,
+  │   "car": {
+  │     "id": {{carId}},
+  │     "brand": "Skoda",
+  │     "model": "Fabia",
+  │     "vrp": "BA111AA",
+  │     "owner": {
+  │       "id": {{userId}},
+  │       "firstName": "Jozko",
+  │       "lastName": "Mkrvicka",
+  │       "email": "jozo.mrkvicka@stuba.sk",
+  │       "cars": [
+  │         {
+  │           "id": {{carId}}
+  │         }
+  │       ]
+  │     },
+  │     "colour": "Green",
+  │     "reservations": []
+  │   },
+  │   "spot": {
+  │     "id": {{parkingSpotId}},
+  │     "identifier": "1.01",
+  │     "carParkFloor": "Floor1",
+  │     "carPark": ,
+  │     "free": false,
+  │     "reservations": []
+  │   }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       1ms    548µs        982µs           6ms              1ms        41µs      12ms  
+
+  [1:14:59] 5. createReservation
+
+→ Update reservation
+  [20. 6. 2022, 1:14:59]  PUT http://localhost:8080/reservations/{{reservationId}}  
+  405 Method Not Allowed ★ 5ms time ★ 1.01kB↑ 74B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 622B
+  │ {
+  │   "id": {{reservationId}},
+  │   "start": "2022-06-08T10:00:00",
+  │   "end": null,
+  │   "prices":null,
+  │     "car": {
+  │     "id": {{carId}},
+  │     "brand": "Skoda",
+  │     "model": "Fabia",
+  │     "vrp": "BA111AA",
+  │     "owner": {
+  │       "id": {{userId}},
+  │       "firstName": "Jozko",
+  │       "lastName": "Mkrvicka",
+  │       "email": "jozo.mrkvicka@stuba.sk",
+  │       "cars": [
+  │         {
+  │           "id": {{carId}}
+  │         }
+  │       ]
+  │     },
+  │     "colour": "Green",
+  │     "reservations": []
+  │   },
+  │   "spot": {
+  │     "id": {{parkingSpotId}},
+  │     "identifier": "1.01",
+  │     "carParkFloor": "Floor1",
+  │     "carPark": ,
+  │     "free": false,
+  │     "reservations": []
+  │   }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       359µs   (cache)      (cache)         2ms              1ms        34µs      5ms   
+
+  [1:15:00] 6. getReservation
+
+→ Get reservation by id Copy
+  [20. 6. 2022, 1:15:00]  GET http://localhost:8080/reservations/{{reservationId}}  
+  404 Not Found ★ 7ms time ★ 336B↑ 45B↓ size ★ 8↑ 1↓ headers ★ 0 cookies
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       394µs   (cache)      (cache)         4ms              1ms        33µs      8ms   
+
+  [1:15:00] 7. getReservation
+
+┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  1 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  9 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                 18 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│      prerequest-scripts │                  9 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                  7 │                 7 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 1102ms                                       │
+├──────────────────────────────────────────────────────────────────┤
+│ total data received: 0B (approx)                                 │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 10ms [min: 5ms, max: 31ms, s.d.: 7ms]     │
+├──────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 2ms [min: 548µs, max: 2ms, s.d.: 715µs] │
+├──────────────────────────────────────────────────────────────────┤
+│ average first byte time: 4ms [min: 2ms, max: 9ms, s.d.: 2ms]     │
+└──────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                                        
+                                                                                                   
+ 1.  AssertionError  createAndSetCarParkId                                                         
+                     expected response to have content in body                                     
+                     at assertion:0 in test-script                                                 
+                     inside "Create new car park Copy"                                             
+                                                                                                   
+ 2.  AssertionError  createParkingSpotWithoutType                                                  
+                     expected response to have status code 201 but got 404                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create parking spot for given car park and given car park floor Copy" 
+                                                                                                   
+ 3.  AssertionError  createUser                                                                    
+                     expected response to have status code 201 but got 401                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create user Copy"                                                     
+                                                                                                   
+ 4.  AssertionError  createCar                                                                     
+                     expected response to have status code 201 but got 400                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create car Copy"                                                      
+                                                                                                   
+ 5.  AssertionError  createReservation                                                             
+                     expected response to have status code 201 but got 401                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create new reservation Copy"                                          
+                                                                                                   
+ 6.  AssertionError  getReservation                                                                
+                     expected response to have status code 200 but got 405                         
+                     at assertion:0 in test-script                                                 
+                     inside "Update reservation"                                                   
+                                                                                                   
+ 7.  AssertionError  getReservation                                                                
+                     expected response to have status code 200 but got 404                         
+                     at assertion:0 in test-script                                                 
+                     inside "Get reservation by id Copy"                                           
+
+-----------------------
+
+updateReservationWithType
+
+→ Create new car park Copy
+  [20. 6. 2022, 1:15:02]  POST http://localhost:8080/carparks  
+  401 Unauthorized ★ 35ms time ★ 455B↑ 48B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 96B
+  │ {
+  │   "id": 28319418,
+  │   "name": "Park1",
+  │   "address": "Address1",
+  │   "prices": 10,
+  │   "floors": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  27ms      8ms    7ms          980µs           7ms              9ms        934µs     63ms  
+
+  [1:15:02] 1. createAndSetCarParkId
+
+→ Create new car park floor for given car park Copy
+  [20. 6. 2022, 1:15:02]  POST http://localhost:8080/carparks//floors  
+  404 Not Found ★ 7ms time ★ 443B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 76B
+  │ {
+  │   "id": -1331359,
+  │   "identifier": "Floor1",
+  │   "carPark": ,
+  │   "spots": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       657µs   (cache)      (cache)         2ms              2ms        78µs      8ms   
+
+
+→ Create new car park floor for given car park Copy
+  [20. 6. 2022, 1:15:02]  POST http://localhost:8080/carparks//floors  
+  404 Not Found ★ 6ms time ★ 425B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 58B
+  │ {
+  │   "identifier": "Floor1",
+  │   "carPark": ,
+  │   "spots": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       566µs   (cache)      (cache)         2ms              1ms        63µs      8ms   
+
+
+→ Create car type Copy
+  [20. 6. 2022, 1:15:02]  POST http://localhost:8080/cartypes  
+  404 Not Found ★ 5ms time ★ 400B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 41B
+  │ {
+  │   "id": 2015878,
+  │   "name": "Electric"
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       256µs   (cache)      (cache)         2ms              1ms        41µs      5ms   
+
+  [1:15:02] 2. createCarType
+
+→ Create parking spot for given car park and given car park floor Copy
+  [20. 6. 2022, 1:15:02]  POST http://localhost:8080/carparks//floors/Floor1/spots  
+  404 Not Found ★ 6ms time ★ 576B↑ 45B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 195B
+  │ {
+  │   "id": -64207243,
+  │   "identifier": "1.01",
+  │   "carParkFloor": "Floor1",
+  │   "carPark": ,
+  │   "free": true,
+  │   "reservations": [],
+  │   "type": {
+  │       "id": {{carTypeId}},
+  │       "name": "Electric"
+  │   }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       336µs   (cache)      (cache)         3ms              1ms        48µs      6ms   
+
+  [1:15:02] 3. createParkingSpotWithType
+
+→ Create user Copy
+  [20. 6. 2022, 1:15:02]  POST http://localhost:8080/users  
+  401 Unauthorized ★ 9ms time ★ 479B↑ 48B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 122B
+  │ {
+  │   "id": -92119638,
+  │   "firstName": "Jozko",
+  │   "lastName": "Mkrvicka",
+  │   "email": "jozo.mrkvicka@stuba.sk",
+  │   "cars": []
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       260µs   (cache)      (cache)         6ms              1ms        41µs      9ms   
+
+  [1:15:02] 4. createUser
+
+→ Create car Copy
+  [20. 6. 2022, 1:15:02]  POST http://localhost:8080/cars  
+  400 Bad Request ★ 10ms time ★ 697B↑ 66B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 341B
+  │ {
+  │   "id": -47280362,
+  │   "brand": "Skoda",
+  │   "model": "Fabia",
+  │   "vrp": "BA111AA",
+  │   "owner": {
+  │     "id": {{userId}},
+  │     "firstName": "Jozko",
+  │     "lastName": "Mkrvicka",
+  │     "email": "jozo.mrkvicka@stuba.sk",
+  │     "cars": []
+  │   },
+  │   "colour": "Green",
+  │   "reservations": [],
+  │   "type": {
+  │       "id": {{carTypeId}},
+  │       "name": "Electric"
+  │   }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       239µs   (cache)      (cache)         7ms              1ms        40µs      10ms  
+
+  [1:15:02] 5. createCar
+
+→ Create new reservation Copy
+  [20. 6. 2022, 1:15:02]  POST http://localhost:8080/reservations  
+  401 Unauthorized ★ 12ms time ★ 992B↑ 48B↓ size ★ 10↑ 1↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 628B
+  │ {
+  │   "id": -61316587,
+  │   "start": "2022-06-08T10:00:00",
+  │   "end": "2022-06-10T09:00:00",
+  │   "prices": 15,
+  │   "car": {
+  │     "id": {{carId}},
+  │     "brand": "Skoda",
+  │     "model": "Fabia",
+  │     "vrp": "BA111AA",
+  │     "owner": {
+  │       "id": {{userId}},
+  │       "firstName": "Jozko",
+  │       "lastName": "Mkrvicka",
+  │       "email": "jozo.mrkvicka@stuba.sk",
+  │       "cars": [
+  │         {
+  │           "id": {{carId}}
+  │         }
+  │       ]
+  │     },
+  │     "colour": "Green",
+  │     "reservations": []
+  │   },
+  │   "spot": {
+  │     "id": {{parkingSpotId}},
+  │     "identifier": "1.01",
+  │     "carParkFloor": "Floor1",
+  │     "carPark": ,
+  │     "free": false,
+  │     "reservations": []
+  │   }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       1ms    1ms          664µs           6ms              1ms        41µs      12ms  
+
+  [1:15:02] 6. createReservation
+
+→ Update reservation
+  [20. 6. 2022, 1:15:02]  PUT http://localhost:8080/reservations/{{reservationId}}  
+  405 Method Not Allowed ★ 5ms time ★ 1.01kB↑ 74B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 622B
+  │ {
+  │   "id": {{reservationId}},
+  │   "start": "2022-06-08T10:00:00",
+  │   "end": null,
+  │   "prices":null,
+  │     "car": {
+  │     "id": {{carId}},
+  │     "brand": "Skoda",
+  │     "model": "Fabia",
+  │     "vrp": "BA111AA",
+  │     "owner": {
+  │       "id": {{userId}},
+  │       "firstName": "Jozko",
+  │       "lastName": "Mkrvicka",
+  │       "email": "jozo.mrkvicka@stuba.sk",
+  │       "cars": [
+  │         {
+  │           "id": {{carId}}
+  │         }
+  │       ]
+  │     },
+  │     "colour": "Green",
+  │     "reservations": []
+  │   },
+  │   "spot": {
+  │     "id": {{parkingSpotId}},
+  │     "identifier": "1.01",
+  │     "carParkFloor": "Floor1",
+  │     "carPark": ,
+  │     "free": false,
+  │     "reservations": []
+  │   }
+  │ }
+  └ 
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       388µs   (cache)      (cache)         2ms              1ms        88µs      6ms   
+
+  [1:15:02] 7. getReservation
+
+→ Get reservation by id Copy
+  [20. 6. 2022, 1:15:03]  GET http://localhost:8080/reservations/{{reservationId}}  
+  404 Not Found ★ 7ms time ★ 336B↑ 45B↓ size ★ 8↑ 1↓ headers ★ 0 cookies
+  ↓ text/plain ★ text ★ plain ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       453µs   (cache)      (cache)         4ms              1ms        41µs      7ms   
+
+  [1:15:03] 8. getReservation
+
+┌─────────────────────────┬──────────────────┬─────────────────┐
+│                         │         executed │          failed │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              iterations │                1 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│                requests │               10 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│            test-scripts │               20 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│      prerequest-scripts │               10 │               0 │
+├─────────────────────────┼──────────────────┼─────────────────┤
+│              assertions │                8 │               8 │
+├─────────────────────────┴──────────────────┴─────────────────┤
+│ total run duration: 1098ms                                   │
+├──────────────────────────────────────────────────────────────┤
+│ total data received: 0B (approx)                             │
+├──────────────────────────────────────────────────────────────┤
+│ average response time: 10ms [min: 5ms, max: 35ms, s.d.: 8ms] │
+├──────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 6ms [min: 1ms, max: 7ms, s.d.: 1ms] │
+├──────────────────────────────────────────────────────────────┤
+│ average first byte time: 4ms [min: 2ms, max: 7ms, s.d.: 2ms] │
+└──────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                                        
+                                                                                                   
+ 1.  AssertionError  createAndSetCarParkId                                                         
+                     expected response to have content in body                                     
+                     at assertion:0 in test-script                                                 
+                     inside "Create new car park Copy"                                             
+                                                                                                   
+ 2.  AssertionError  createCarType                                                                 
+                     expected response to have status code 201 but got 404                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create car type Copy"                                                 
+                                                                                                   
+ 3.  AssertionError  createParkingSpotWithType                                                     
+                     expected response to have status code 201 but got 404                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create parking spot for given car park and given car park floor Copy" 
+                                                                                                   
+ 4.  AssertionError  createUser                                                                    
+                     expected response to have status code 201 but got 401                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create user Copy"                                                     
+                                                                                                   
+ 5.  AssertionError  createCar                                                                     
+                     expected response to have status code 201 but got 400                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create car Copy"                                                      
+                                                                                                   
+ 6.  AssertionError  createReservation                                                             
+                     expected response to have status code 201 but got 401                         
+                     at assertion:0 in test-script                                                 
+                     inside "Create new reservation Copy"                                          
+                                                                                                   
+ 7.  AssertionError  getReservation                                                                
+                     expected response to have status code 200 but got 405                         
+                     at assertion:0 in test-script                                                 
+                     inside "Update reservation"                                                   
+                                                                                                   
+ 8.  AssertionError  getReservation                                                                
+                     expected response to have status code 200 but got 404                         
+                     at assertion:0 in test-script                                                 
+                     inside "Get reservation by id Copy"                                           
+
+-----------------------
+
+updateUser
+
+→ Create user
+  [20. 6. 2022, 1:15:04]  POST http://localhost:8080/users  
+  201 Created ★ 56ms time ★ 463B↑ 170B↓ size ★ 10↑ 2↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 122B
+  │ {
+  │   "id": -92119638,
+  │   "firstName": "Jozko",
+  │   "lastName": "Mkrvicka",
+  │   "email": "jozo.mrkvicka@stuba.sk",
+  │   "cars": []
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 94B
+  │ {"id":62,"firstName":"Jozko","lastName":"Mkrvicka","em
+  │ ail":"jozo.mrkvicka@stuba.sk","cars":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  32ms      9ms    6ms          1ms             28ms             9ms        778µs     88ms  
+
+  [1:15:04]  √  createUser
+
+→ Update user
+  [20. 6. 2022, 1:15:05]  PUT http://localhost:8080/users/62  
+  400 Bad Request ★ 15ms time ★ 447B↑ 485B↓ size ★ 10↑ 3↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 104B
+  │ {
+  │   "id": 62,
+  │   "firstName": "John",
+  │   "lastName": "Doe",
+  │   "email": "john.doe@stuba.sk",
+  │   "cars": []
+  │ }
+  └ 
+  ┌ ↓ text/plain ★ text ★ plain ★ utf8 ★ 391B
+  │ Unrecognized field "id" (class sk.stuba.fei.uim.vsa.pr
+  │ 2.entities.User), not marked as ignorable (5 known pro
+  │ perties: "lastname", "firstname", "email", "userId", "
+  │ cars"])
+  │  at [Source: (String)"{
+  │   "id": 62,
+  │   "firstName": "John",
+  │   "lastName": "Doe",
+  │   "email": "john.doe@stuba.sk",
+  │   "cars": []
+  │ }"; line: 2, column: 11] (through reference chain: sk.
+  │ stuba.fei.uim.vsa.pr2.entities.User["id"])
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  2ms       1ms    (cache)      (cache)         11ms             2ms        90µs      17ms  
+
+  [1:15:05] 1. updateUser
+
+→ Get user by id
+  [20. 6. 2022, 1:15:05]  GET http://localhost:8080/users/62  
+  200 OK ★ 15ms time ★ 290B↑ 165B↓ size ★ 8↑ 2↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 94B
+  │ {"id":62,"firstName":"Jozko","lastName":"Mkrvicka","em
+  │ ail":"jozo.mrkvicka@stuba.sk","cars":[]}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   transfer-start   download   process   total 
+  1ms       1ms    518µs        753µs           9ms              2ms        143µs     16ms  
+
+  [1:15:05] 2. getUser
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                 6 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 3 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                 3 │                2 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 526ms                                      │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 579B (approx)                             │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 28ms [min: 15ms, max: 56ms, s.d.: 19ms] │
+├────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 4ms [min: 518µs, max: 6ms, s.d.: 2ms] │
+├────────────────────────────────────────────────────────────────┤
+│ average first byte time: 16ms [min: 9ms, max: 28ms, s.d.: 8ms] │
+└────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                
+                                                                           
+ 1.  AssertionError  updateUser                                            
+                     expected response to have status code 200 but got 400 
+                     at assertion:0 in test-script                         
+                     inside "Update user"                                  
+                                                                           
+ 2.  AssertionError  getUser                                               
+                     expected 'Jozko' to deeply equal 'John'               
+                     at assertion:0 in test-script                         
+                     inside "Get user by id"                               
+
+-----------------------
+

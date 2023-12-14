@@ -1,0 +1,387 @@
+jún 20, 2022 1:13:05 AM sk.stuba.fei.uim.vsa.pr2.Project2 startServer
+INFO: Starting Grizzly2 HTTP server...
+jún 20, 2022 1:13:05 AM sk.stuba.fei.uim.vsa.pr2.Project2 startServer
+INFO: Server listening on http://localhost/:8080
+jún 20, 2022 1:13:05 AM org.glassfish.jersey.server.wadl.WadlFeature configure
+WARNING: JAXBContext implementation could not be found. WADL feature is disabled.
+jún 20, 2022 1:13:07 AM org.glassfish.grizzly.http.server.NetworkListener start
+INFO: Started listener bound to [localhost:8080]
+jún 20, 2022 1:13:07 AM org.glassfish.grizzly.http.server.HttpServer start
+INFO: [HttpServer] Started.
+Mon Jun 20 01:13:08 CEST 2022 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+jún 20, 2022 1:13:37 AM sk.stuba.fei.uim.vsa.pr2.web.ReservationResource createReserv
+SEVERE: null
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Long` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: (String)"{
+  "id": -61316587,
+  "start": "2022-06-08T10:00:00",
+  "end": "2022-06-10T09:00:00",
+  "prices": 15,
+  "car": {
+    "id": {{carId}},
+    "brand": "Skoda",
+    "model": "Fabia",
+    "vrp": "BA111AA",
+    "owner": {
+      "id": 18,
+      "firstName": "Jozko",
+      "lastName": "Mkrvicka",
+      "email": "jozo.mrkvicka@stuba.sk",
+      "cars": [
+        {
+          "id": {{carId}}
+        }
+      ]
+    },
+    "colour": "Green",
+    "reservations": []
+  },
+  "spot": {
+    "id": {{parkingSpotId}},
+"[truncated 122 chars]; line: 7, column: 11] (through reference chain: sk.stuba.fei.uim.vsa.pr2.web.response.ReservationDTO["car"]->sk.stuba.fei.uim.vsa.pr2.web.response.CarDto2["id"])
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1741)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1515)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1420)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:932)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseLong(StdDeserializer.java:921)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$LongDeserializer.deserialize(NumberDeserializers.java:575)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$LongDeserializer.deserialize(NumberDeserializers.java:550)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:313)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:313)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:322)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4675)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3630)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3598)
+	at sk.stuba.fei.uim.vsa.pr2.web.ReservationResource.createReserv(ReservationResource.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:124)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:167)
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:176)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:79)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:475)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:397)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:81)
+	at org.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:255)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:248)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:244)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:292)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:274)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:244)
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:265)
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:234)
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:684)
+	at org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpContainer.service(GrizzlyHttpContainer.java:356)
+	at org.glassfish.grizzly.http.server.HttpHandler$1.run(HttpHandler.java:190)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:535)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:515)
+	at java.lang.Thread.run(Thread.java:748)
+
+jún 20, 2022 1:14:28 AM sk.stuba.fei.uim.vsa.pr2.web.ReservationResource createReserv
+SEVERE: null
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Long` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: (String)"{
+  "id": -61316587,
+  "start": "2022-06-08T10:00:00",
+  "end": "2022-06-10T09:00:00",
+  "prices": 15,
+  "car": {
+    "id": {{carId}},
+    "brand": "Skoda",
+    "model": "Fabia",
+    "vrp": "BA111AA",
+    "owner": {
+      "id": 50,
+      "firstName": "Jozko",
+      "lastName": "Mkrvicka",
+      "email": "jozo.mrkvicka@stuba.sk",
+      "cars": [
+        {
+          "id": {{carId}}
+        }
+      ]
+    },
+    "colour": "Green",
+    "reservations": []
+  },
+  "spot": {
+    "id": {{parkingSpotId}},
+"[truncated 122 chars]; line: 7, column: 11] (through reference chain: sk.stuba.fei.uim.vsa.pr2.web.response.ReservationDTO["car"]->sk.stuba.fei.uim.vsa.pr2.web.response.CarDto2["id"])
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1741)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1515)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1420)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:932)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseLong(StdDeserializer.java:921)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$LongDeserializer.deserialize(NumberDeserializers.java:575)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$LongDeserializer.deserialize(NumberDeserializers.java:550)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:313)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:313)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:322)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4675)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3630)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3598)
+	at sk.stuba.fei.uim.vsa.pr2.web.ReservationResource.createReserv(ReservationResource.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:124)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:167)
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:176)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:79)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:475)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:397)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:81)
+	at org.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:255)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:248)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:244)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:292)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:274)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:244)
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:265)
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:234)
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:684)
+	at org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpContainer.service(GrizzlyHttpContainer.java:356)
+	at org.glassfish.grizzly.http.server.HttpHandler$1.run(HttpHandler.java:190)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:535)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:515)
+	at java.lang.Thread.run(Thread.java:748)
+
+jún 20, 2022 1:14:50 AM sk.stuba.fei.uim.vsa.pr2.web.CarResource createCar
+SEVERE: null
+com.fasterxml.jackson.databind.JsonMappingException: Unexpected character ('{' (code 123)): was expecting double-quote to start field name
+ at [Source: (String)"{
+  "id": -47280362,
+  "brand": "Skoda",
+  "model": "Fabia",
+  "vrp": "BA111AA",
+  "owner": {
+    "id": 59,
+    "firstName": "Jozko",
+    "lastName": "Mkrvicka",
+    "email": "jozo.mrkvicka@stuba.sk",
+    "cars": []
+  },
+  "colour": "Green",
+  "reservations": [],
+  "type": {
+      "id": {{carTypeId}},
+      "name": "Electric"
+    }
+}"; line: 16, column: 15] (through reference chain: sk.stuba.fei.uim.vsa.pr2.web.response.CarDTO["type"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:392)
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:351)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.wrapAndThrow(BeanDeserializerBase.java:1821)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1674)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:319)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:322)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4675)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3630)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3598)
+	at sk.stuba.fei.uim.vsa.pr2.web.CarResource.createCar(CarResource.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:124)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:167)
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:176)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:79)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:475)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:397)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:81)
+	at org.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:255)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:248)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:244)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:292)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:274)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:244)
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:265)
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:234)
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:684)
+	at org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpContainer.service(GrizzlyHttpContainer.java:356)
+	at org.glassfish.grizzly.http.server.HttpHandler$1.run(HttpHandler.java:190)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:535)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:515)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unexpected character ('{' (code 123)): was expecting double-quote to start field name
+ at [Source: (String)"{
+  "id": -47280362,
+  "brand": "Skoda",
+  "model": "Fabia",
+  "vrp": "BA111AA",
+  "owner": {
+    "id": 59,
+    "firstName": "Jozko",
+    "lastName": "Mkrvicka",
+    "email": "jozo.mrkvicka@stuba.sk",
+    "cars": []
+  },
+  "colour": "Green",
+  "reservations": [],
+  "type": {
+      "id": {{carTypeId}},
+      "name": "Electric"
+    }
+}"; line: 16, column: 15]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:2391)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:735)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportUnexpectedChar(ParserMinimalBase.java:659)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._handleOddName(ReaderBasedJsonParser.java:1860)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:734)
+	at com.fasterxml.jackson.databind.deser.std.UntypedObjectDeserializer$Vanilla.deserialize(UntypedObjectDeserializer.java:701)
+	at com.fasterxml.jackson.databind.deser.std.UntypedObjectDeserializer$Vanilla.mapObject(UntypedObjectDeserializer.java:924)
+	at com.fasterxml.jackson.databind.deser.std.UntypedObjectDeserializer$Vanilla.deserialize(UntypedObjectDeserializer.java:707)
+	at com.fasterxml.jackson.databind.deser.SettableAnyProperty.deserialize(SettableAnyProperty.java:153)
+	at com.fasterxml.jackson.databind.deser.SettableAnyProperty.deserializeAndSet(SettableAnyProperty.java:134)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1672)
+	... 33 more
+
+jún 20, 2022 1:14:59 AM sk.stuba.fei.uim.vsa.pr2.web.CarResource createCar
+SEVERE: null
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Long` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: (String)"{
+  "id": -47280362,
+  "brand": "Skoda",
+  "model": "Fabia",
+  "vrp": "BA111AA",
+  "owner": {
+    "id": {{userId}},
+    "firstName": "Jozko",
+    "lastName": "Mkrvicka",
+    "email": "jozo.mrkvicka@stuba.sk",
+    "cars": []
+  },
+  "colour": "Green",
+  "reservations": []
+}"; line: 7, column: 11] (through reference chain: sk.stuba.fei.uim.vsa.pr2.web.response.CarDTO["owner"]->sk.stuba.fei.uim.vsa.pr2.web.response.UserDto2["id"])
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1741)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1515)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1420)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:932)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseLong(StdDeserializer.java:921)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$LongDeserializer.deserialize(NumberDeserializers.java:575)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$LongDeserializer.deserialize(NumberDeserializers.java:550)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:313)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:313)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:322)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4675)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3630)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3598)
+	at sk.stuba.fei.uim.vsa.pr2.web.CarResource.createCar(CarResource.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:124)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:167)
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:176)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:79)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:475)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:397)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:81)
+	at org.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:255)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:248)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:244)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:292)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:274)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:244)
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:265)
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:234)
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:684)
+	at org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpContainer.service(GrizzlyHttpContainer.java:356)
+	at org.glassfish.grizzly.http.server.HttpHandler$1.run(HttpHandler.java:190)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:535)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:515)
+	at java.lang.Thread.run(Thread.java:748)
+
+jún 20, 2022 1:15:02 AM sk.stuba.fei.uim.vsa.pr2.web.CarResource createCar
+SEVERE: null
+com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Long` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: (String)"{
+  "id": -47280362,
+  "brand": "Skoda",
+  "model": "Fabia",
+  "vrp": "BA111AA",
+  "owner": {
+    "id": {{userId}},
+    "firstName": "Jozko",
+    "lastName": "Mkrvicka",
+    "email": "jozo.mrkvicka@stuba.sk",
+    "cars": []
+  },
+  "colour": "Green",
+  "reservations": [],
+  "type": {
+      "id": {{carTypeId}},
+      "name": "Electric"
+  }
+}"; line: 7, column: 11] (through reference chain: sk.stuba.fei.uim.vsa.pr2.web.response.CarDTO["owner"]->sk.stuba.fei.uim.vsa.pr2.web.response.UserDto2["id"])
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1741)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1515)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1420)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:932)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseLong(StdDeserializer.java:921)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$LongDeserializer.deserialize(NumberDeserializers.java:575)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$LongDeserializer.deserialize(NumberDeserializers.java:550)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:313)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:313)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:176)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:322)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4675)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3630)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3598)
+	at sk.stuba.fei.uim.vsa.pr2.web.CarResource.createCar(CarResource.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher$1.run(AbstractJavaResourceMethodDispatcher.java:124)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.invoke(AbstractJavaResourceMethodDispatcher.java:167)
+	at org.glassfish.jersey.server.model.internal.JavaResourceMethodDispatcherProvider$ResponseOutInvoker.doDispatch(JavaResourceMethodDispatcherProvider.java:176)
+	at org.glassfish.jersey.server.model.internal.AbstractJavaResourceMethodDispatcher.dispatch(AbstractJavaResourceMethodDispatcher.java:79)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.invoke(ResourceMethodInvoker.java:475)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:397)
+	at org.glassfish.jersey.server.model.ResourceMethodInvoker.apply(ResourceMethodInvoker.java:81)
+	at org.glassfish.jersey.server.ServerRuntime$1.run(ServerRuntime.java:255)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:248)
+	at org.glassfish.jersey.internal.Errors$1.call(Errors.java:244)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:292)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:274)
+	at org.glassfish.jersey.internal.Errors.process(Errors.java:244)
+	at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:265)
+	at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:234)
+	at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:684)
+	at org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpContainer.service(GrizzlyHttpContainer.java:356)
+	at org.glassfish.grizzly.http.server.HttpHandler$1.run(HttpHandler.java:190)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:535)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:515)
+	at java.lang.Thread.run(Thread.java:748)
+
